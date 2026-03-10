@@ -1,0 +1,15 @@
+This project contains the application layer of the Project Management System.
+It is responsible for implementing the use cases and application logic of the system.
+The application layer serves as the intermediary between the domain layer and the presentation layer,
+coordinating the flow of data and handling the execution of business rules defined in the domain layer.
+The application layer includes:
+- Application Services: These services implement the use cases of the application,
+	orchestrating the interactions between the domain layer and the presentation layer.
+- Data Transfer Objects (DTOs): These are simple objects used to transfer data between the application layer
+	and the presentation layer, often used to encapsulate the data needed for specific use cases.
+- Command and Query Handlers: These handlers are responsible for processing commands (actions that change state)
+	and queries (actions that retrieve data) in the application.
+The application layer is designed to be independent of any specific technology or framework,
+allowing it to focus on the application logic and use cases of the system.
+It serves as a bridge between the domain layer, which contains the core business logic,
+and the presentation layer, which handles user interactions and displays data to the user.

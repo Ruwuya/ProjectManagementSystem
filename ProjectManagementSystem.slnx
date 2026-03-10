@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="ProjectManagement.Application/ProjectManagement.Application.csproj" />
+  <Project Path="ProjectManagement.Domain/ProjectManagement.Domain.csproj" />
+  <Project Path="ProjectManagement.Infrastructure/ProjectManagement.Infrastructure.csproj" />
+  <Project Path="ProjectManagement.Wpf/ProjectManagement.Wpf.csproj" />
+</Solution>

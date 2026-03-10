@@ -1,0 +1,17 @@
+This project contains the infrastructure layer of the Project Management System.
+It is responsible for technical implementation details such as:
+data access,
+repository implementations,
+and communication with the database.
+
+The project will contain components related to persistence and external technical services,
+while keeping these concerns separate from the business logic and presentation layer.
+Examples of content in this project:
+- DbContext
+- Repository implementations
+- Data access services
+- Entity Framework configurations
+- Migrations
+The infrastructure layer is designed to be independent of the domain and application layers,
+allowing it to focus on the technical implementation details of the system.
+It serves as a foundation for the

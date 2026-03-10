@@ -1,0 +1,10 @@
+This project contains the Wpf presentation layer of the Project Management System.
+It is responsible for implementing the user interface and handling user interactions.
+The Wpf project includes:
+- Views: These are the XAML files that define the visual layout of the application, such as windows, user controls, etc.
+- ViewModels: These are the classes that contain the logic and data for the views, following the MVVM (Model-View-ViewModel) pattern.
+- Commands: These are the classes that implement the ICommand interface, allowing the views to bind to actions in the ViewModels.
+- Data Binding: The Wpf project will utilize data binding to connect the views to the ViewModels,
+	allowing for a clean separation of concerns and a more maintainable codebase.
+The Wpf project will interact with the application layer to execute use cases and retrieve data,
+while also providing a responsive and user-friendly interface for the users of the Project Management System.

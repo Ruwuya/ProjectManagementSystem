@@ -1,0 +1,48 @@
+# Build results
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains (optional but harmless)
+.idea/
+*.sln.iml
+
+# Logs
+*.log
+
+# NuGet packages
+*.nupkg
+packages/
+
+# .NET build artifacts
+*.dll
+*.exe
+*.pdb
+*.cache
+
+# Test results
+TestResults/
+
+# Publish output
+publish/
+
+# Local configuration files
+appsettings.Development.json
+appsettings.json
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Visual Studio Code
+.vscode/
+
+# Temporary files
+*.tmp
+*.temp
