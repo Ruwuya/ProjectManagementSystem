@@ -12,10 +12,12 @@ namespace ProjectManagement.Domain.Entities.Models
         [Key]
         [Column("Id")]
         public int Id { get; set; }
-        [Key]
+
+        [Required]
         [Column("Name")]
         public string Name { get; set; }
-        [Key]
+
+        [Required]
         [Column("Quantity")]
         public int Quantity { get; set; }
     }

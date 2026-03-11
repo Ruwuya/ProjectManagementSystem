@@ -12,20 +12,25 @@ namespace ProjectManagement.Domain.Entities.Models
         [Key]
         [Column("Id")]
         public int Id { get; set; }
-        [Key]
+
+        [Required]
         [Column("Email")]
-        public string Email { get; set; }
-        [Key]
+        public required string Email { get; set; }
+
+        [Required]
         [Column("Username")]
-        public string Username { get; set; }
-        [Key]
+        public required string Username { get; set; }
+
+        [Required]
         [Column("PasswordHash")]
-        public string Password { get; set; }
-        [Key]
+        public required string Password { get; set; }
+
+        [Required]
         [Column("FirstName")]
-        public string FirstName { get; set; }
-        [Key]
+        public required string FirstName { get; set; }
+
+        [Required]
         [Column("LastName")]
-        public string LastName { get; set; }
+        public required string LastName { get; set; }
     }
 }

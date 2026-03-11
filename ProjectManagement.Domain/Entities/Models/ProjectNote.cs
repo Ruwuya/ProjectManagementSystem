@@ -12,16 +12,20 @@ namespace ProjectManagement.Domain.Entities.Models
         [Key]
         [Column("id")]
         public int Id { get; set; }
-        [Key]
+
+        [Required]
         [Column("ProjectId")]
         public int ProjectId { get; set; }
-        [Key]
+
+        [Required]
         [Column("UserId")]
         public int UserId { get; set; }
-        [Key]
+
+        [Required]
         [Column("NoteText")]
         public string NoteText { get; set; }
-        [Key]
+
+        [Required]
         [Column("CreatedAt")]
         public DateTime CreatedAt { get; set; }
     }

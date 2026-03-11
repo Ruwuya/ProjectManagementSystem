@@ -9,25 +9,30 @@ namespace ProjectManagement.Domain.Entities.Models
     [Table("project_members")]
     public class ProjectMember
     {
-        [Key]
+        [Required]
         [Column("Id")]
         public int Id { get; set; }
-        [Key]
+
+        [Required]
         [Column("ProjectId")]
         public int ProjectId { get; set; }
-        [Key]
+
+        [Required]
         [Column("UserId")]
         public int UserId { get; set; }
-        [Key]
+
+        [Required]
         [Column("ProjectRoleId")]
         public int ProjectRoleId { get; set; }
-        [Key]
+
+        [Required]
         [Column("JoinedAt")]
         public DateTime JoinedAt { get; set; }
-        [Key]
+
         [Column("LeftAt")]
         public DateTime LeftAt { get; set; }
-        [Key]
+
+        [Required]
         [Column("IsActive")]
         public bool IsActive { get; set; }
     }
