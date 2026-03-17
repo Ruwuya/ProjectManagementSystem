@@ -10,4 +10,8 @@
     <ProjectReference Include="..\ProjectManagement.Domain\ProjectManagement.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mapping\" />
+  </ItemGroup>
+
 </Project>

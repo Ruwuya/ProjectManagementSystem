@@ -15,10 +15,10 @@ namespace ProjectManagement.Domain.Entities.Models
 
         [Required]
         [Column("Name")]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [Required]
         [Column("Quantity")]
-        public int Quantity { get; set; }
+        public required int Quantity { get; set; }
     }
 }

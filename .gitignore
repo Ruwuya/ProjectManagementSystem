@@ -34,7 +34,6 @@ publish/
 
 # Local configuration files
 appsettings.Development.json
-appsettings.json
 
 # OS junk
 .DS_Store
