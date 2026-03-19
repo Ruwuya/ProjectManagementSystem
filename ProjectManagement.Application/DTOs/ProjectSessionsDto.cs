@@ -10,7 +10,7 @@ namespace ProjectManagement.Application.DTOs
         public int UserId { get; set; }
         public string Username { get; set; } = string.Empty;
         public DateTime CheckIn { get; set; }
-        public DateTime? Checkout { get; set; }
+        public DateTime? CheckOut { get; set; }
         public string? Notes { get; set; }
     }
 }

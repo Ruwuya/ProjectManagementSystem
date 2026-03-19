@@ -67,7 +67,7 @@ namespace ProjectManagement.Infrastructure.Repositories
                     UserId = reader.GetInt32(reader.GetOrdinal("UserId")),
                     Username = reader.GetString(reader.GetOrdinal("Username")),
                     CheckIn = reader.GetDateTime(reader.GetOrdinal("CheckIn")),
-                    Checkout = reader.IsDBNull(reader.GetOrdinal("CheckOut"))
+                    CheckOut = reader.IsDBNull(reader.GetOrdinal("CheckOut"))
                         ? null
                         : reader.GetDateTime(reader.GetOrdinal("CheckOut")),
                     Notes = reader.IsDBNull(reader.GetOrdinal("Notes"))

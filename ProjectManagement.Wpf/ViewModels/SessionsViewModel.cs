@@ -71,7 +71,7 @@ namespace ProjectManagement.Wpf.ViewModels
                 {
                     Username = session.Username,
                     CheckIn = session.CheckIn,
-                    CheckOut = session.Checkout,
+                    CheckOut = session.CheckOut,
                     Notes = session.Notes ?? string.Empty
                 });
             }
