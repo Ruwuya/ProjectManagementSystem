@@ -1,0 +1,307 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ========================= -->
+    <!-- COLORS -->
+    <!-- ========================= -->
+    <Color x:Key="MekBlackColor">#0F0F0F</Color>
+    <Color x:Key="MekPanelColor">#1A1A1A</Color>
+    <Color x:Key="MekPanelAltColor">#202020</Color>
+    <Color x:Key="MekBorderColor">#3A3A3A</Color>
+    <Color x:Key="MekTextColor">#E6E6E6</Color>
+    <Color x:Key="MekMutedTextColor">#A8A8A8</Color>
+    <Color x:Key="MekYellowColor">#D4A017</Color>
+    <Color x:Key="MekYellowDarkColor">#8A690D</Color>
+    <Color x:Key="MekRedColor">#C23B22</Color>
+    <Color x:Key="MekRedDarkColor">#7A2416</Color>
+    <Color x:Key="MekGreenColor">#4C9A2A</Color>
+    <Color x:Key="MekBlueColor">#3D6FB4</Color>
+    <Color x:Key="MekCompleteGreyColor">#7C7C7C</Color>
+
+    <SolidColorBrush x:Key="MekBlackBrush" Color="{StaticResource MekBlackColor}"/>
+    <SolidColorBrush x:Key="MekPanelBrush" Color="{StaticResource MekPanelColor}"/>
+    <SolidColorBrush x:Key="MekPanelAltBrush" Color="{StaticResource MekPanelAltColor}"/>
+    <SolidColorBrush x:Key="MekBorderBrush" Color="{StaticResource MekBorderColor}"/>
+    <SolidColorBrush x:Key="MekTextBrush" Color="{StaticResource MekTextColor}"/>
+    <SolidColorBrush x:Key="MekMutedTextBrush" Color="{StaticResource MekMutedTextColor}"/>
+    <SolidColorBrush x:Key="MekYellowBrush" Color="{StaticResource MekYellowColor}"/>
+    <SolidColorBrush x:Key="MekYellowDarkBrush" Color="{StaticResource MekYellowDarkColor}"/>
+    <SolidColorBrush x:Key="MekRedBrush" Color="{StaticResource MekRedColor}"/>
+    <SolidColorBrush x:Key="MekRedDarkBrush" Color="{StaticResource MekRedDarkColor}"/>
+    <SolidColorBrush x:Key="MekGreenBrush" Color="{StaticResource MekGreenColor}"/>
+    <SolidColorBrush x:Key="MekBlueBrush" Color="{StaticResource MekBlueColor}"/>
+    <SolidColorBrush x:Key="MekCompleteGreyBrush" Color="{StaticResource MekCompleteGreyColor}"/>
+
+    <!-- ========================= -->
+    <!-- HAZARD STRIPE BRUSH -->
+    <!-- ========================= -->
+    <DrawingBrush x:Key="HazardStripeBrush"
+                  Viewport="0,0,24,24"
+                  ViewportUnits="Absolute"
+                  TileMode="Tile"
+                  Stretch="None">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="#D4A017">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,24,24"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#111111">
+                    <GeometryDrawing.Geometry>
+                        <GeometryGroup>
+                            <RectangleGeometry Rect="-8,0,8,32">
+                                <RectangleGeometry.Transform>
+                                    <RotateTransform Angle="45" CenterX="0" CenterY="0"/>
+                                </RectangleGeometry.Transform>
+                            </RectangleGeometry>
+                            <RectangleGeometry Rect="8,0,8,32">
+                                <RectangleGeometry.Transform>
+                                    <RotateTransform Angle="45" CenterX="0" CenterY="0"/>
+                                </RectangleGeometry.Transform>
+                            </RectangleGeometry>
+                            <RectangleGeometry Rect="24,0,8,32">
+                                <RectangleGeometry.Transform>
+                                    <RotateTransform Angle="45" CenterX="0" CenterY="0"/>
+                                </RectangleGeometry.Transform>
+                            </RectangleGeometry>
+                        </GeometryGroup>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <!-- Softer stripe overlay -->
+    <VisualBrush x:Key="DisabledOverlayBrush" Stretch="Fill" Opacity="0.15" Visual="{x:Null}"/>
+
+    <!-- ========================= -->
+    <!-- BASE STYLES -->
+    <!-- ========================= -->
+    <Style TargetType="Window">
+        <Setter Property="Background" Value="{StaticResource MekBlackBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource MekTextBrush}"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+    </Style>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource MekTextBrush}"/>
+    </Style>
+
+    <Style x:Key="ShellPanelBorderStyle" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource MekPanelBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MekBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="10"/>
+    </Style>
+
+    <Style x:Key="ContentPanelBorderStyle" TargetType="Border" BasedOn="{StaticResource ShellPanelBorderStyle}">
+        <Setter Property="Background" Value="{StaticResource MekBlackBrush}"/>
+        <Setter Property="CornerRadius" Value="10"/>
+    </Style>
+
+    <Style x:Key="SectionTitleTextStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource MekTextBrush}"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="MutedTextStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource MekMutedTextBrush}"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+    <!-- ========================= -->
+    <!-- BUTTON STYLES -->
+    <!-- ========================= -->
+    <Style x:Key="BaseButtonStyle" TargetType="Button">
+        <Setter Property="Foreground" Value="{StaticResource MekTextBrush}"/>
+        <Setter Property="Background" Value="{StaticResource MekPanelAltBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MekBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="12,8"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Root"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="8"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Margin="{TemplateBinding Padding}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource MekYellowBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Root" Property="Background" Value="#2A2A2A"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Root" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource MekYellowDarkBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MekYellowBrush}"/>
+    </Style>
+
+    <Style x:Key="DangerButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource MekRedDarkBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MekRedBrush}"/>
+    </Style>
+
+    <!-- ========================= -->
+    <!-- SIDEBAR ACTIVE NAV STYLE -->
+    <!-- Use ToggleButton for nav -->
+    <!-- ========================= -->
+    <Style x:Key="NavToggleButtonStyle" TargetType="ToggleButton">
+        <Setter Property="Foreground" Value="{StaticResource MekTextBrush}"/>
+        <Setter Property="Background" Value="{StaticResource MekPanelAltBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MekBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="14,10"/>
+        <Setter Property="Margin" Value="0,6,0,0"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid>
+                        <Border x:Name="Root"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10"/>
+
+                        <!-- Active hazard stripe overlay -->
+                        <Border x:Name="HazardOverlay"
+                                Background="{StaticResource HazardStripeBrush}"
+                                CornerRadius="10"
+                                Opacity="0"
+                                Margin="1"/>
+
+                        <!-- Darken overlay so stripes do not nuke readability -->
+                        <Border x:Name="ShadeOverlay"
+                                Background="#77000000"
+                                CornerRadius="10"
+                                Opacity="0"
+                                Margin="1"/>
+
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource MekYellowBrush}"/>
+                        </Trigger>
+
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource MekYellowBrush}"/>
+                            <Setter TargetName="Root" Property="Background" Value="#1B1B1B"/>
+                            <Setter TargetName="HazardOverlay" Property="Opacity" Value="0.35"/>
+                            <Setter TargetName="ShadeOverlay" Property="Opacity" Value="1"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Root" Property="Background" Value="#2A2A2A"/>
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Root" Property="Opacity" Value="0.45"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ========================= -->
+    <!-- TEXT INPUT -->
+    <!-- ========================= -->
+    <Style x:Key="MekTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Foreground" Value="{StaticResource MekTextBrush}"/>
+        <Setter Property="Background" Value="{StaticResource MekBlackBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MekBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="CaretBrush" Value="{StaticResource MekYellowBrush}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource MekYellowDarkBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="Root"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="6"
+                            SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="Root" Property="BorderBrush" Value="{StaticResource MekYellowBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Root" Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MekComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="Foreground" Value="{StaticResource MekTextBrush}"/>
+        <Setter Property="Background" Value="{StaticResource MekBlackBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MekBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="8,6"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <!-- ========================= -->
+    <!-- STATUS BADGES -->
+    <!-- ========================= -->
+    <Style x:Key="StatusBadgeBorderStyle" TargetType="Border">
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Padding" Value="10,4"/>
+        <Setter Property="Background" Value="{StaticResource MekPanelAltBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MekBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+    <Style x:Key="UpcomingStatusBadgeStyle" TargetType="Border" BasedOn="{StaticResource StatusBadgeBorderStyle}">
+        <Setter Property="Background" Value="#1E2E49"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MekBlueBrush}"/>
+    </Style>
+
+    <Style x:Key="OngoingStatusBadgeStyle" TargetType="Border" BasedOn="{StaticResource StatusBadgeBorderStyle}">
+        <Setter Property="Background" Value="#1E3318"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MekGreenBrush}"/>
+    </Style>
+
+    <Style x:Key="CompletedStatusBadgeStyle" TargetType="Border" BasedOn="{StaticResource StatusBadgeBorderStyle}">
+        <Setter Property="Background" Value="#2A2A2A"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MekCompleteGreyBrush}"/>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,58 @@
+﻿<Window x:Class="ProjectManagement.Wpf.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="The Hour Orc WAAAGH"
+        Height="800"
+        Width="1280"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="{StaticResource MekBlackBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0"
+                Style="{StaticResource ShellPanelBorderStyle}"
+                Margin="10,10,5,10">
+            <DockPanel>
+
+                <TextBlock Text="The Hour Orc WAAAGH"
+                           Style="{StaticResource SectionTitleTextStyle}"
+                           DockPanel.Dock="Top"
+                           Margin="0,0,0,20"
+                           TextWrapping="Wrap"/>
+
+                <TextBlock Text="Version 0.5"
+                           Style="{StaticResource MutedTextStyle}"
+                           DockPanel.Dock="Bottom"/>
+
+                <StackPanel>
+                    <ToggleButton Content="Home / Project Summary"
+                                  Style="{StaticResource NavToggleButtonStyle}"
+                                  Command="{Binding ShowHomeCommand}"
+                                  IsChecked="{Binding IsHomeSelected}"/>
+
+                    <ToggleButton Content="Notes"
+                                  Style="{StaticResource NavToggleButtonStyle}"
+                                  Command="{Binding ShowNotesCommand}"
+                                  IsChecked="{Binding IsNotesSelected}"/>
+
+                    <ToggleButton Content="Sessions"
+                                  Style="{StaticResource NavToggleButtonStyle}"
+                                  Command="{Binding ShowSessionsCommand}"
+                                  IsChecked="{Binding IsSessionsSelected}"/>
+                </StackPanel>
+
+            </DockPanel>
+        </Border>
+
+        <!-- Main content -->
+        <Border Grid.Column="1"
+                Style="{StaticResource ContentPanelBorderStyle}"
+                Margin="5,10,10,10">
+            <ContentControl Content="{Binding CurrentViewModel}"/>
+        </Border>
+    </Grid>
+</Window>

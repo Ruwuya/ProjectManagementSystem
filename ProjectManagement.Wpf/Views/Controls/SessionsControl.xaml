@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="ProjectManagement.Wpf.Views.Controls.SessionsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Style="{StaticResource ShellPanelBorderStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock Text="{Binding ProjectName}"
+                               Style="{StaticResource SectionTitleTextStyle}"/>
+                    <TextBlock Text="{Binding DisplayDate}"
+                               Style="{StaticResource MutedTextStyle}"
+                               Margin="0,6,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Sessions -->
+        <Border Grid.Row="1"
+                Style="{StaticResource ShellPanelBorderStyle}"
+                Margin="0,15,0,15">
+            <DataGrid ItemsSource="{Binding Sessions}"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      HeadersVisibility="Column"
+                      Background="{StaticResource MekBlackBrush}"
+                      Foreground="{StaticResource MekTextBrush}"
+                      BorderBrush="{StaticResource MekBorderBrush}"
+                      BorderThickness="1">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Username" Binding="{Binding Username}" Width="*"/>
+                    <DataGridTextColumn Header="Check In" Binding="{Binding CheckInText}" Width="*"/>
+                    <DataGridTextColumn Header="Check Out" Binding="{Binding CheckOutText}" Width="*"/>
+                    <DataGridTextColumn Header="Notes" Binding="{Binding Notes}" Width="2*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <!-- Bottom -->
+        <Border Grid.Row="2"
+                Style="{StaticResource ShellPanelBorderStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button Content="&lt;="
+                            Style="{StaticResource BaseButtonStyle}"
+                            Width="80"
+                            Margin="0,0,5,0"
+                            Command="{Binding PreviousDayCommand}"/>
+
+                    <Button Content="Today"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Width="120"
+                            Margin="5,0"
+                            Command="{Binding TodayCommand}"/>
+
+                    <Button Content="=&gt;"
+                            Style="{StaticResource BaseButtonStyle}"
+                            Width="80"
+                            Margin="5,0,0,0"
+                            Command="{Binding NextDayCommand}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <Button Content="Check Out"
+                            Style="{StaticResource DangerButtonStyle}"
+                            Width="120"
+                            Margin="0,0,10,0"
+                            Command="{Binding CheckOutCommand}"
+                            IsEnabled="{Binding CanSessionActions}"/>
+
+                    <Button Content="Check In"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Width="120"
+                            Command="{Binding CheckInCommand}"
+                            IsEnabled="{Binding CanSessionActions}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

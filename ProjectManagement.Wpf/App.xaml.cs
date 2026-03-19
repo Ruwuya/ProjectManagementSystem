@@ -10,6 +10,7 @@ using System.IO;
 using ProjectManagement.Application.Interfaces;
 using ProjectManagement.Application.Services;
 using ProjectManagement.Infrastructure.Repositories;
+using ProjectManagement.Wpf.Views;
 
 namespace ProjectManagement.Wpf
 {
