@@ -7,6 +7,7 @@ namespace ProjectManagement.Application.Interfaces
 {
     public interface IProjectService
     {
+        Task<List<ProjectListItemDto>> GetAllProjectsAsync();
         Task<ProjectDetailsDto?> GetProjectDetailsAsync(int projectId);
         Task CheckInSessionAsync(int userId, int projectId, string? notes);
         Task CheckOutSessionAsync(int userId, string? notes);

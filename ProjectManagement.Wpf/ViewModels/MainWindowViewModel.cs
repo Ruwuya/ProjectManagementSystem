@@ -1,4 +1,7 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows.Input;
+using ProjectManagement.Application.DTOs;
 using ProjectManagement.Application.Interfaces;
 
 namespace ProjectManagement.Wpf.ViewModels
@@ -7,7 +10,8 @@ namespace ProjectManagement.Wpf.ViewModels
     {
         private readonly IProjectService _projectService;
 
-        // Hardcoded for now until active-project selection is added
+        public ObservableCollection<ProjectListItemDto> Projects { get; } = new();
+
         private int _currentProjectId = 1;
 
         private object _currentViewModel = null!;
@@ -54,6 +58,22 @@ namespace ProjectManagement.Wpf.ViewModels
             }
         }
 
+        private ProjectListItemDto? _selectedProject;
+        public ProjectListItemDto? SelectedProject
+        {
+            get => _selectedProject;
+            set
+            {
+                _selectedProject = value;
+                OnPropertyChanged();
+
+                if (value != null)
+                {
+                    OnProjectChanged(value.Id);
+                }
+            }
+        }
+
         public ICommand ShowHomeCommand { get; }
         public ICommand ShowNotesCommand { get; }
         public ICommand ShowSessionsCommand { get; }
@@ -66,7 +86,40 @@ namespace ProjectManagement.Wpf.ViewModels
             ShowNotesCommand = new RelayCommand(_ => ShowNotes());
             ShowSessionsCommand = new RelayCommand(_ => ShowSessions());
 
-            ShowHome();
+            _ = LoadProjectsAsync();
+        }
+
+        private async Task LoadProjectsAsync()
+        {
+            Projects.Clear();
+
+            var projects = await _projectService.GetAllProjectsAsync();
+
+            foreach (var project in projects)
+            {
+                Projects.Add(project);
+            }
+
+            SelectedProject = Projects.FirstOrDefault();
+
+            if (SelectedProject is null)
+            {
+                ShowHome();
+            }
+        }
+
+        private void OnProjectChanged(int projectId)
+        {
+            _currentProjectId = projectId;
+
+            if (IsHomeSelected)
+                ShowHome();
+            else if (IsNotesSelected)
+                ShowNotes();
+            else if (IsSessionsSelected)
+                ShowSessions();
+            else
+                ShowHome();
         }
 
         private void ShowHome()

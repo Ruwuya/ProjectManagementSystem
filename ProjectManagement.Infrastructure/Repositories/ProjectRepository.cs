@@ -9,6 +9,8 @@ using System.Data;
 
 namespace ProjectManagement.Infrastructure.Repositories
 {
+    // ProjectRepository is responsible for data access related to projects,
+    // including retrieving project details, adding notes, and managing sessions.
     public class ProjectRepository : IProjectRepository
     {
         private readonly string _connectionString;
@@ -143,7 +145,7 @@ namespace ProjectManagement.Infrastructure.Repositories
             command.Parameters.Add("@UserId", SqlDbType.Int).Value = dto.UserId;
             command.Parameters.Add("@ProjectId", SqlDbType.Int).Value = dto.ProjectId;
 
-            command.Parameters.Add("@Notes", SqlDbType.NVarChar, -1).Value = dto.Notes 
+            command.Parameters.Add("@Notes", SqlDbType.NVarChar, -1).Value = dto.Notes
                 ?? (object)DBNull.Value;
 
             await connection.OpenAsync();
@@ -159,11 +161,44 @@ namespace ProjectManagement.Infrastructure.Repositories
 
             command.Parameters.Add("@UserId", SqlDbType.Int).Value = dto.UserId;
 
-            command.Parameters.Add("@Notes", SqlDbType.NVarChar, -1).Value = dto.Notes 
+            command.Parameters.Add("@Notes", SqlDbType.NVarChar, -1).Value = dto.Notes
                 ?? (object)DBNull.Value;
 
             await connection.OpenAsync();
             await command.ExecuteNonQueryAsync();
+        }
+        public async Task<List<ProjectListItemDto>> GetAllProjectsAsync()
+        {
+            var projects = new List<ProjectListItemDto>();
+
+            await using var connection = new SqlConnection(_connectionString);
+            await using var command = new SqlCommand(@"
+                SELECT
+                    Id,
+                    Name,
+                    CASE
+                        WHEN EndDate < SYSDATETIME() THEN 'Completed'
+                        WHEN StartDate > SYSDATETIME() THEN 'Upcoming'
+                        ELSE 'Ongoing'
+                    END AS Status
+                FROM projects
+                ORDER BY Name;", connection);
+
+            command.CommandType = CommandType.Text;
+
+            await connection.OpenAsync();
+            await using var reader = await command.ExecuteReaderAsync();
+
+            while(await reader.ReadAsync())
+            {
+                projects.Add(new ProjectListItemDto
+                {
+                    Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                    Name = reader.GetString(reader.GetOrdinal("Name")),
+                    Status = reader.GetString(reader.GetOrdinal("Status"))
+                });
+            }
+            return projects;
         }
     }
 }

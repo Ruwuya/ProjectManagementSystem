@@ -64,4 +64,9 @@ public class ProjectService : IProjectService
         // Call the repository method to get the project details and return the result.
         return await _projectRepository.GetProjectDetailsAsync(projectId);
     }
+    public async Task<List<ProjectListItemDto>> GetAllProjectsAsync()
+    {
+        return await _projectRepository.GetAllProjectsAsync();
+    }
+
 }
